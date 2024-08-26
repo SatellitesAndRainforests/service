@@ -1,0 +1,19 @@
+--
+--
+Install-Module -Name Az -AllowClobber -Scope CurrentUser
+--
+Connect-AzAccout
+Get-AzSubscription
+Set-AzSubscription -SubscriptionId "the subscription id"
+--
+# # - - resource group is top containing other things ( like service plan
+	(containers)) kind of like top/ serviceplan/ ...
+# # - - app service plan , ( mid-level ) only manages  compute resources
+# # - - ( resource ) actual thing , frontend application , server application	 
+
+
+New-AzResourceGroup -Name "marksResourceGroupName" -Location "UK South"
+Get-AzResourceGroup marksResourceGroupName
+
+New-AzAppServicePlan -Name "myServicePlan" -ResourceGroupName
+"myResourceGroup" -Location "UK South" -Tier "Free"
