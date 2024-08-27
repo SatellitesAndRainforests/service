@@ -10,8 +10,8 @@ namespace service.Application.Mappings
 
         public MappingProfile() {
 
-            CreateMap<TestObject, TestResponse>();
-            CreateMap<TestRequest, TestObject>();
+            CreateMap<TestEntityObject, TestResponse>();
+            CreateMap<TestRequest, TestEntityObject>();
         
         }
 

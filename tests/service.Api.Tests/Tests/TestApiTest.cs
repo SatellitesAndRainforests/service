@@ -20,7 +20,7 @@ namespace service.Api.Tests.Tests
 
 
         [Fact]
-        public async void GetTest_ReturnsResultsOkWithTestResponse()
+        public async Task GetTest_ReturnsResultsOkWithTestResponse()
         {
             // Arrange 
             await using var application = new TestApplicationFactory(Xunit =>
@@ -40,6 +40,27 @@ namespace service.Api.Tests.Tests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotNull(responseContent);
             Assert.IsType<TestResponse>(result);
+
+        }
+
+
+        [Fact]
+        public async Task GetTest_ReturnsInternalServerHttpStatusCodeWhenException()
+        {
+            // Arrange 
+            await using var application = new TestApplicationFactory(Xunit =>
+            {
+                Xunit.AddSingleton(_testService.Object);
+            });
+            var client = application.CreateClient();
+
+            _testService.Setup(x => x.GetTestAsync()).Throws<Exception>();
+
+            // Act
+            var response = await client.GetAsync("/test");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
 
         }
 

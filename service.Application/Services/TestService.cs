@@ -13,7 +13,7 @@ namespace service.Application.Services
 
         public async Task<TestResponse> GetTestAsync()
         {
-            TestObject? result = await _testRepository.GetTestAsync();
+            TestEntityObject? result = await _testRepository.GetTestAsync();
 
             if (result == null) throw new CustomException("null");
 

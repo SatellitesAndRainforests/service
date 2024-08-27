@@ -6,18 +6,18 @@ namespace service.Infrastructure.Repositories
     public class TestRepository : ITestRepository
     {
 
-        private List<TestObject> _inMemoryCollection;
+        private List<TestEntityObject> _inMemoryCollection;
 
         public TestRepository()
         {
-            _inMemoryCollection = new List<TestObject>
+            _inMemoryCollection = new List<TestEntityObject>
             {
-                new TestObject { TestInt = 1, TestString = "test A", TestBool = true },
-                new TestObject { TestInt = 2, TestString = "test B", TestBool = true },
+                new TestEntityObject { TestInt = 1, TestString = "test A", TestBool = true },
+                new TestEntityObject { TestInt = 2, TestString = "test B", TestBool = true },
             };
         }
 
-        public Task<TestObject?> GetTestAsync()
+        public Task<TestEntityObject?> GetTestAsync()
         {
             var result = _inMemoryCollection.FirstOrDefault();
             return Task.FromResult(result);
