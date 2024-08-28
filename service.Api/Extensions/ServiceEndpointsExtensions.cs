@@ -3,17 +3,19 @@ using FluentValidation.Results;
 using service.Domain.Requests;
 using Microsoft.AspNetCore.Mvc;
 using service.Application.Interfaces;
+using service.Domain.Responses;
 
 namespace service.Api.Extensions
 {
-    public static class ServiceEndpointsExtension
+    public static class ServiceEndpointsExtensions
     {
         public static void MapServiceEndpoints(this WebApplication app)
         {
 
             app.MapGet("/test", async ( ITestService testService) =>
             {
-                return Results.Ok(await testService.GetTestAsync());
+                TestResponse result = await testService.GetTestAsync();
+                return Results.Ok(result);
             });
 
 

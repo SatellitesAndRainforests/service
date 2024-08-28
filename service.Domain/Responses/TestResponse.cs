@@ -2,6 +2,6 @@
 {
     public class TestResponse
     {
-        public string? TestString;
+        public string? TestString { get; set; }
     }
 }

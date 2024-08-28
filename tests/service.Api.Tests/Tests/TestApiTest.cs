@@ -29,7 +29,7 @@ namespace service.Api.Tests.Tests
             });
             var client = application.CreateClient();
 
-            _testService.Setup(x => x.GetTestAsync()).ReturnsAsync(new TestResponse());
+            _testService.Setup(x => x.GetTestAsync()).ReturnsAsync(new TestResponse { TestString = "Test A" });
 
             // Act
             var response = await client.GetAsync("/test");
@@ -40,6 +40,7 @@ namespace service.Api.Tests.Tests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotNull(responseContent);
             Assert.IsType<TestResponse>(result);
+            Assert.Equal("Test A", result.TestString);
 
         }
 

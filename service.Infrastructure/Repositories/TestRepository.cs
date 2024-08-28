@@ -19,7 +19,7 @@ namespace service.Infrastructure.Repositories
 
         public Task<TestEntityObject?> GetTestAsync()
         {
-            var result = _inMemoryCollection.FirstOrDefault();
+            var result = _inMemoryCollection.FirstOrDefault(x => x.TestString == "test B");
             return Task.FromResult(result);
         }
 
