@@ -1,4 +1,6 @@
 ﻿using FluentValidation;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using service.Application.Interfaces;
 using service.Application.Mappings;
 using service.Application.Services;
@@ -20,7 +22,7 @@ namespace service.Api.Extensions
             services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddScoped<ITestService, TestService>();
-            services.AddSingleton<ITestRepository, TestRepository>();
+            services.AddTransient<ITestRepository, TestRepository>();
 
             services.AddHttpClient<ITestClient, TestClient>(x => x.BaseAddress = new Uri("https://localhost:0000"));
             services.AddHttpClient<ITestEmailClient, TestEmailClient>(x => x.BaseAddress = new Uri("https://localhost:1111"));
@@ -30,6 +32,13 @@ namespace service.Api.Extensions
             //
 
             //services.AddTransient<ITestMessageService, TestMessageService>();
+
+            services.AddDbContext<DatabaseDbContext>(options =>
+            {
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                sqlOptions => sqlOptions.EnableRetryOnFailure());
+            });
+
 
             return services;
 

@@ -12,6 +12,8 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddSwaggerGen();
 }
 
+//builder.Services.AddDatabaseContext(builder.Configuration);
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();

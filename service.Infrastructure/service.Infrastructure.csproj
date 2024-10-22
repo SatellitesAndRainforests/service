@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.1" />
+    <PackageReference Include="Database.Domain" Version="1.0.0" />
+    <PackageReference Include="Database.Infrastructure" Version="1.0.0" />
     <PackageReference Include="MassTransit" Version="8.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

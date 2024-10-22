@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Entities;
 using service.Application.Exceptions;
 using service.Application.Interfaces;
 using service.Domain.Entities;
@@ -10,6 +11,12 @@ namespace service.Application.Services
     {
         private readonly IMapper _automapper = mapper;
         private readonly ITestRepository _testRepository = testRepository;
+
+
+        public Task<Entity1?> GetEntity1Async()
+        {
+            return _testRepository.GetEntity1Async();
+        }
 
         public async Task<TestResponse> GetTestAsync()
         {

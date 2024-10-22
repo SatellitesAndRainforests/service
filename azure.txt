@@ -2,6 +2,16 @@
 --
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 --
+
+az cli
+az login
+az account list --output table (shows all subscriptions availilbe to my
+account - this is like the /home in linux /home/projects
+/home/resources-groups)
+az account account set --subscription "name-of-subscription"
+az resource list --output table  (list resources in subscription)
+
+
 Connect-AzAccout
 Get-AzSubscription
 Set-AzSubscription -SubscriptionId "the subscription id"

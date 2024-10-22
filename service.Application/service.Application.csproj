@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Database.Domain" Version="1.0.0" />
+    <PackageReference Include="Database.Infrastructure" Version="1.0.0" />
     <PackageReference Include="FluentValidation" Version="11.9.2" />
   </ItemGroup>
 

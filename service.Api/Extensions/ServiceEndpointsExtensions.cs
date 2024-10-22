@@ -18,6 +18,12 @@ namespace service.Api.Extensions
                 return Results.Ok(result);
             });
 
+            app.MapGet("/testEntity1", async (ITestService testService) =>
+            {
+                var result = await testService.GetEntity1Async();
+                return Results.Ok(result);
+            });
+
 
             //app.MapPut("test-add", async (
             //    [FromBody] TestRequest request,
